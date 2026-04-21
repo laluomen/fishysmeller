@@ -1,0 +1,10 @@
+{
+    "name": "Fishy Smeller",
+    "description": "Smell some fishy links and inform you that it is a trap :D",
+    "version": "0.1.3",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup/main.html",
+        "default_icon": "icon.png"
+    }
+}
