@@ -1,9 +1,30 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="main.css">
-    </head>
-    <body>
-        <h1>I smell something fishy...</h1>
-        <script src="./main.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./main.css">
+    <title>Fishy Smeller</title>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <img src="../icons/icon32.png" alt="Icon">
+            <h2>Fishy Smeller</h2>
+        </div>
+        <div id="url-display" class="truncate">Loading...</div>
+    </header>
+
+    <main>
+        <div id="status-container">
+            <h1 id="status-text">SAFE</h1>
+            <p id="score-text">Skor: 0/100</p>
+        </div>
+
+        <div id="rules-container">
+            <p id="safe-message">Tidak ada tanda bahaya</p>
+        </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+</body>
 </html>
