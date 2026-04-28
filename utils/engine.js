@@ -38,13 +38,16 @@ export class Detector {
         let score = 0;
         let triggeredRules = [];
         let hostname = url;
+        let pathname = '';
+        let search = '';
+        let hash = '';
 
         try {
             const urlObject = new URL(url);
             hostname = urlObject.hostname;
-            let pathname = urlObject.pathname;
-            let search = urlObject.search;
-            let hash = urlObject.hash;
+            pathname = urlObject.pathname;
+            search = urlObject.search;
+            hash = urlObject.hash;
         } catch (e) {};
 
         for (const dfa of this.dfas) {
@@ -53,9 +56,9 @@ export class Detector {
                           (dfa.target === 'search') ? search :
                           (dfa.target === 'hash') ? hash : url;
             
-            if (dfa.evaluate(url)) {
+            if (dfa.evaluate(scanUrl)) {
                 score += dfa.weight;
-                triggeredRules.push(dfa.name);
+                triggeredRules.push({ name: dfa.name, weight: dfa.weight });
             }
         }
 
