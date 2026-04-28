@@ -42,10 +42,16 @@ export class Detector {
         try {
             const urlObject = new URL(url);
             hostname = urlObject.hostname;
+            let pathname = urlObject.pathname;
+            let search = urlObject.search;
+            let hash = urlObject.hash;
         } catch (e) {};
 
         for (const dfa of this.dfas) {
-            let scanUrl = (dfa.target === 'hostname') ? hostname : url;
+            let scanUrl = (dfa.target === 'hostname') ? hostname : 
+                          (dfa.target === 'pathname') ? pathname : 
+                          (dfa.target === 'search') ? search :
+                          (dfa.target === 'hash') ? hash : url;
             
             if (dfa.evaluate(url)) {
                 score += dfa.weight;
